@@ -176,7 +176,7 @@ for episode in range(500):
         drone_actor = plotter.add_mesh(pv.Sphere(radius=400, center=true_points[0]), color='yellow', label='Live Drone Position')
         plotter.add_legend()
         plotter.show(interactive_update=True)
-        print(f"\n--> [10] SHOWING FINAL LIVE SIMULATION FOR EPISODE {episode + 1}/100...")
+        print(f"\n--> [10] SHOWING FINAL LIVE SIMULATION FOR EPISODE {episode + 1}/500...")
     else:
         if (episode + 1) % 10 == 0:
             print(f"--> Training in background... Episode {episode + 1}/500 complete.")
