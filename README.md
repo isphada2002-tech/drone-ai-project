@@ -7,9 +7,10 @@ An autonomous flight simulation powered by Reinforcement Learning (RL) designed 
 Unlike standard implementations that rely on high-level deep learning frameworks, this agent features a custom-built **Double Deep Q-Network (DDQN)** engineered entirely from scratch using **pure NumPy matrix operations**. This design guarantees zero framework overhead, making it highly optimized for resource-constrained embedded systems and low-latency flight controllers.
 
 ### 🚀 Key Technical Architectures:
-* **Mathematical Backpropagation from Scratch:** Implemented manual forward and backward propagation passes. Gradient calculations ($dW_1, db_1, dW_2, db_2$) are derived directly via the chain rule, utilizing a customized gradient clipping mechanism ($\pm 1.0$) on $\frac{\partial L}{\partial Q}$ to securely mitigate the risk of exploding gradients.
+* **Mathematical Backpropagation from Scratch:** Implemented manual forward and backward propagation passes. Gradient calculations (dW1, db1, dW2, db2) are derived directly via the chain rule, utilizing a customized gradient clipping mechanism (+/- 1.0) on the loss gradient (dL/dQ) to securely mitigate the risk of exploding gradients.
 * **Overestimation Bias Mitigation:** Leverages a decoupled dual-network setup (Online Network and Target Network). The Online Network selects the optimal 3D action vector, while the Target Network evaluates its corresponding Q-value, effectively eliminating the standard DQN overestimation bias.
-* **6-DoF Control & Spatial Feature Scaling:** Navigates the agent dynamically across the 3D grid ($X, Y, Z$ axes for Forward/Backward, Left/Right, Up/Down). Input features `[drift_x, drift_y, ground_clearance]` undergo continuous min-max and feature scaling directly within the state preparation pipeline to ensure numerical stability during neural weight updates.
+* **6-DoF Control & Spatial Feature Scaling:** Navigates the agent dynamically across the 3D grid (X, Y, Z axes for Forward/Backward, Left/Right, Up/Down). Input features `[drift_x, drift_y, ground_clearance]` undergo continuous min-max and feature scaling directly within the state preparation pipeline to ensure numerical stability during neural weight updates.
+
 
 
 ---
